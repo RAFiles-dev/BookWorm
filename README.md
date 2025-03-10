@@ -1,2 +1,2 @@
 # BookWorm
-É um CRUD para registrar livros e detalhes relacionados.
+É um CRUD para registrar obras e detalhes relacionados.
