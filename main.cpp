@@ -3,16 +3,16 @@
 #include "biblioteca.h"
 
 int main() {
+  setlocale(LC_ALL, "Portuguese");
+  
   cBibliotecario b;
   cGerenciadorCrud gc;
-  
-  setlocale(LC_ALL, "Portuguese");
     
   bool loop1, loop2, loop3, loop4;
   char tecla;
   string nome;
   string autor;
-  int numPag;
+  int paginas;
   
   loop1 = true;
   while(loop1) {
@@ -93,7 +93,7 @@ int main() {
                 cout << "Adicionando um livro :D\n";
                 cout << endl;
                 cout << "Digite o número de páginas: ";
-                cin >> numPag;
+                cin >> paginas;
                 cout << endl;
                 cout << "Você confirma o número de páginas? [s/n]\n";
                 loop4 = true;
@@ -112,7 +112,7 @@ int main() {
               cout << endl;
               cout << "Nome: " << nome << endl;
               cout << "Autor(es): " << autor << endl;
-              cout << "Número de páginas: " << numPag << endl;
+              cout << "Número de páginas: " << paginas << endl;
               cout << endl;
               cout << "Você deseja registrar com essas informações? [s/n]\n";
               loop3 = true;
@@ -133,32 +133,16 @@ int main() {
                  loop2 = false;
           }
         }
-        parar(13);
         break;
       case '2':
-        limpar();
-        cout << "Opção 2 escolhida\n";
-        parar(13);
         break;
       case '3':
-        limpar();
-        cout << "Opção 3 escolhida\n";
-        parar(13);
         break;
       case '4':
-        limpar();
-        cout << "Opção 4 escolhida\n";
-        parar(13);
         break;
       case '5':
-        limpar();
-        cout << "Opção 5 escolhida\n";
-        parar(13);
         break;
       case '6':
-        limpar();
-        cout << "Opção 6 escolhida\n";
-        parar(13);
         break;
       case '7':
         loop2 = true;
@@ -175,12 +159,8 @@ int main() {
         }
         break;
       default:
-        limpar();
-        cout << "Opção inválida";
-        parar(13);
         break;
     }
   }
-
-  return 0;
+  return 1;
 }

@@ -31,13 +31,14 @@ char getTecla() {
     }
 }
 
-void parar(char x) {
+void parar() {
      bool loop = true;
      char tecla;
      
+     cout << "Pressione Enter para continuar...";
      while(loop) {
          tecla = getTecla();
-         if(tecla == x) {
+         if(tecla == 13) {
              loop = false;
          }
      }
