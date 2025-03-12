@@ -11,10 +11,9 @@ class cObra {
     protected:
         string nome;
         string autoria;
-        int paginas;
     public:
-        cObra(string n, string a, int p) {
-            nome = n; autoria = a; paginas = p;
+        cObra(string n, string a) {
+            nome = n; autoria = a;
         }
         void setNome(string n) {
             nome = n;
@@ -22,17 +21,11 @@ class cObra {
         void setAutoria(string a) {
             autoria = a;
         }
-        void setPaginas(int p) {
-            paginas = p;
-        }
         string getNome() {
             return nome;
         }
         string getAutoria() {
             return autoria;
-        }
-        int getPaginas() {
-            return paginas;
         }
 };
 
@@ -52,9 +45,18 @@ class cBibliotecario {
         void adicionar(cObra o){
             if(getIndice(o.getNome()) == -1) {
                 obra.emplace_back(o);
+                limpar();
+                cout << o.getNome() << " foi adicionado com sucesso.\n";
+                cout << endl;
+                parar();
+            } else {
+                cout << o.getNome() << " já está registrado.\n";
+                cout << endl;
+                parar();
             }
         }
         void listar() {
+            limpar();
             if(obra.size() != 0) {
                 cout << "Lista de todas as obras registradas\n";
                 cout << endl;
@@ -62,54 +64,66 @@ class cBibliotecario {
                     cout << i+1 << "a Obra\n";
                     cout << "Nome: " << obra[i].getNome() << endl;
                     cout << "Autoria: " << obra[i].getAutoria() << endl;
-                    cout << "Páginas: " << obra[i].getPaginas() << endl;
-                    if(i + 1 < obra.size()) {
-                         cout << endl;
-                    }
-                }   
+                    cout << endl;
+                }
+                parar();
             } else {
-                cout << "Nenhuma obra registrada\n"; 
+                cout << "Nenhuma obra registrada\n";
+                cout << endl;
+                parar();
             }
         }
         void pesquisar(string n) {
+            limpar();
             bool achou = false;
             for(int i = 0; i < obra.size(); i++) {
                 if(obra[i].getNome() == n) {
+                    achou = true;
                     cout << "Obra encontrada\n";
                     cout << endl;
-                    cout << "Nome: " << obra[i].getNome() << endl;
+                    cout << "Nome: " << n << endl;
                     cout << "Autoria: " << obra[i].getAutoria() << endl;
-                    cout << "Páginas: " << obra[i].getPaginas() << endl;
-                    achou = true;
                     break;
                 }
             }
             if(!achou) {
                 cout << n << " não foi encontrado. Verifique se digitou corretamente o nome registrado.\n";
-            }       
+            }
+            cout << endl;
+            parar();       
         }
-        /*int alterar(string n) {
+        /*void alterar(string n) {
             for(int i = 0; i < obra.size(); i++) {
                 if(obra[i].getNome() == n) {
                     
                 }
             }
-            cout << n << " não foi encontrado! Verique se o nome está digitado corretamente\n";
+            cout << n << " nï¿½o foi encontrado! Verique se o nome estï¿½ digitado corretamente\n";
             parar();
         }*/
         void remover(string n) {
+            limpar();
+            bool achou = false;
             for(int i = 0; i < obra.size(); i++) {
                 if(obra[i].getNome() == n) {
+                    achou = true;
                     obra.erase(obra.begin()+i);
+                    cout << n << " foi removido com sucesso.\n";
+                    break;
                 }
             }
+            if(!achou) {
+                cout << n << " não está registrado.\n";
+            }
+            cout << endl;
+            parar();
         }
-        /*int exibir() {
+        /*void exibir() {
             
         }*/
 };
 
-/*class cLivro : public cObra {
+class cLivro : public cObra {
         
 };
 
@@ -119,6 +133,6 @@ class cFilme : public cObra {
 
 class cSerie : public cObra {
       
-};*/
+};
 
 #endif
