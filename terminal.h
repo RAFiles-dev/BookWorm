@@ -12,8 +12,8 @@ void printTxt(const string& nome) {
     ifstream arquivo(nome);
 
     if (!arquivo.is_open()) {
-        cerr << "Erro ao procurar o arquivo " << nome << endl;
-        cerr << "Verifique se o arquivo está presente na pasta do CRUD." << endl;
+        cerr << "Erro ao abrir o arquivo " << nome << endl;
+        cerr << "Verifique se o arquivo está presente na pasta do programa." << endl;
         exit(EXIT_FAILURE);
     }
 
@@ -24,28 +24,28 @@ void printTxt(const string& nome) {
 }
 
 char getTecla() {
-    while(true) {
-        if(_kbhit()) {
+    while (true) {
+        if (_kbhit()) {
             return _getch();
         }
     }
 }
 
 void parar() {
-     bool loop = true;
-     char tecla;
-     
-     cout << "Pressione Enter para continuar...";
-     while(loop) {
-         tecla = getTecla();
-         if(tecla == 13) {
-             loop = false;
-         }
-     }
+    bool loop = true;
+    char tecla;
+
+    cout << "Pressione Enter para continuar...";
+    while (loop) {
+        tecla = getTecla();
+        if (tecla == 13) {
+            loop = false;
+        }
+    }
 }
 
 void limpar() {
-     system("cls");
+    system("cls");
 }
 
 #endif
